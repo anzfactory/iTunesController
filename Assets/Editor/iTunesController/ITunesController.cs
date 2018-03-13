@@ -12,7 +12,7 @@ namespace Anz.Editor.iTunes
 			Play, Pause, Status
 		}
 
-		private static Config _config;
+		private static Data _data;
 
 		static ITunesController()
 		{
@@ -20,10 +20,10 @@ namespace Anz.Editor.iTunes
 
 			// 静的なフラグ変数で済ませたいのだけれど、ビルドが終わったり再生するときなんかに都度初期化されるんで...
 			// ScriptableObjectとして保存している
-			if (!File.Exists(Settings.File.Config.FullPath())) {
-				Config.Create();
+			if (!File.Exists(Settings.File.Data.FullPath())) {
+				Data.Create();
 			}
-			_config = AssetDatabase.LoadAssetAtPath<Config>(Settings.File.Config.AssetPath());
+			_data = AssetDatabase.LoadAssetAtPath<Data>(Settings.File.Data.AssetPath());
 		}
 
 		[MenuItem("iTunes/Play %#>")]
@@ -49,11 +49,11 @@ namespace Anz.Editor.iTunes
 
 			switch (state) {
 				case PlayModeStateChange.ExitingEditMode:
-					_config.needsAutoPlay = IsPlayingNow();
+					_data.needsAutoPlay = IsPlayingNow();
 					Pause();
 					break;
 				case PlayModeStateChange.ExitingPlayMode:
-					if (_config.needsAutoPlay) {
+					if (_data.needsAutoPlay) {
 						Play();
 					}
 					break;
