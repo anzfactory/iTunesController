@@ -9,7 +9,7 @@ Macのみ（Mac OS は Sierra で確認）
 
 ## Installation
 
-[ここ](https://anz-note.ghost.io)から**iTunesController.package.zip**をダウンロードしてから展開後、Unityでインポート
+[ここ](https://github.com/anzfactory/iTunesController/releases/latest)から**iTunesController.package.zip**をダウンロードしてから展開後、Unityでインポート
 
 ## Author
 
